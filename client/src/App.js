@@ -75,6 +75,7 @@ const submitNewMovie = event =>{
 
       <Route exact path="/">
         <MovieList movies={movieList} deleteMovie={deleteMovie}/>
+        <div className="add-movie-container">
         <h5>Add a New Movie</h5>
         <form className='add-movie' onSubmit={submitNewMovie}>
           <label htmlFor='title'>
@@ -97,6 +98,7 @@ const submitNewMovie = event =>{
           </label>
           <input type='submit' name='submit' className="add-movie-submit" />
         </form>
+        </div>
       </Route>
 
       <Route path="/movies/:id">

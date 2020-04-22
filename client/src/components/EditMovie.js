@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import { useHistory } from "react-router";
 import axios from 'axios';
 
@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const EditMovie = props => {
 
-    const {path, url}= useRouteMatch();
+    const {url}= useRouteMatch();
     const index = url.slice(-1);
     const movieData= props.movieList[index]; 
     const newMovieList = props.movieList
@@ -39,9 +39,6 @@ const EditMovie = props => {
         setMovie({...movie, stars: movieData.stars})
         props.setMovieList(newMovieList)
         match.push(`/movies/${movie.id}`)
-        console.log("BOTTOM OF SUBMIT")
-        
-            
         })
       .catch(err => console.log(err.response));
   };
@@ -88,6 +85,9 @@ const EditMovie = props => {
         </div>
       ))}
       <input type='submit' name='submit' />
+      <Link to={`/movies/${movie.id}`}>
+      <button>Cancel</button>
+      </Link>
     </form>
     )
 }
